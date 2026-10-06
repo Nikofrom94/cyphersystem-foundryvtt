@@ -37,6 +37,8 @@ import {
   removeTagFromItem
 } from "../utilities/tagging-engine/tagging-engine-computation.js";
 
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 export class CypherActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   /** @override */
@@ -177,6 +179,12 @@ export class CypherActorSheet extends foundry.appv1.sheets.ActorSheet {
     const tagsTwo = [];
     const tagsThree = [];
     const tagsFour = [];
+    const minorWounds = [];
+    const minorWoundsMax = 0;
+    const moderateWounds = [];
+    const moderateWoundsMax = 0;
+    const majorWounds = [];
+    const majorWoundsMax = 0;
 
     // Iterate through items, allocating to containers
     for (let item of data.items) {
@@ -1385,3 +1393,4 @@ export class CypherActorSheet extends foundry.appv1.sheets.ActorSheet {
     return editor;
   }
 }
+

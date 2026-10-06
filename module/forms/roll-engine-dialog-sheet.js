@@ -165,6 +165,7 @@ export class RollEngineDialogSheet extends FormApplication {
       data.sheetSettings.backgroundImagePath = "/" + getBackgroundImagePath();
       data.sheetSettings.backgroundOverlayOpacity = getBackgroundImageOverlayOpacity();
     }
+    data.sheetSettings.useWounds = game.settings.get("cyphersystem", "useWounds");
 
     // Select choices
     data.baseDifficultyChoices = [
@@ -264,6 +265,7 @@ export class RollEngineDialogSheet extends FormApplication {
     data.freeEffort = parseInt(formData.freeEffort);
     data.easedOrHindered = formData.easedOrHindered;
     data.difficultyModifier = formData.difficultyModifier ? formData.difficultyModifier : 0;
+    data.difficultyFromWounds = formData.difficultyFromWounds ? formData.difficultyFromWounds : 0;
     data.bonus = formData.bonus ? formData.bonus : 0;
     data.poolPointCost = formData.poolPointCost ? formData.poolPointCost : 0;
 
@@ -467,6 +469,7 @@ export async function disableMultiRoll(actor) {
 function summaryFinalDifficulty(data) {
   let difficultyModifier =
     data.easedOrHindered == "hindered" ? data.difficultyModifier * -1 : data.difficultyModifier;
+  difficultyModifier -= data.difficultyFromWounds;
   let sum =
     data.skillLevel + data.assets + data.effortToEase + difficultyModifier - data.stressModifier;
   let finalDifficulty = useEffectiveDifficulty(data.baseDifficulty)
@@ -508,7 +511,7 @@ function summaryStressLevels(data) {
 function summaryTaskModified(data) {
   let difficultyModifier =
     data.easedOrHindered == "hindered" ? data.difficultyModifier * -1 : data.difficultyModifier;
-
+  difficultyModifier -= data.difficultyFromWounds;
   let sum =
     data.skillLevel + data.assets + data.effortToEase + difficultyModifier - data.stressModifier;
 

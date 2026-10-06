@@ -10,6 +10,7 @@
         <div class="item-name">{{localize 'CYPHERSYSTEM.DamageTrackAndRecoveryRolls'}}</div>
       {{/if}}
     </li>
+    {{!-- Unmasked - Mask form --}}
     {{#if (and (eq actor.system.basic.unmaskedForm "Mask") actor.system.settings.combat.stress.active)}}
       <li class="item flexrow non-draggable">
         <h4 class="item-name">
@@ -66,6 +67,7 @@
       {{/if}}
     {{/if}}
     <li class="item flexrow non-draggable">
+      {{!-- Unmasked - Teen form --}}
       {{#if (eq actor.system.basic.unmaskedForm "Teen")}}
         <div class="item-damage">
           <select class="damage-track-select" name="system.teen.combat.damageTrack.state">
@@ -100,43 +102,109 @@
           {{/if}}
         </div>
       {{else}}
-        <div class="item-damage">
-          <select class="damage-track-select" name="system.combat.damageTrack.state">
-            {{selectOptions damageTrackChoices selected=actor.system.combat.damageTrack.state localize=true}}
-          </select>
-        </div>
-        <div class="centered-content" style="min-height: 40px; line-height: 1.4">
-          {{#if (or (eq actor.system.combat.damageTrack.state "Hale") (eq actor.system.combat.damageTrack.state "Hurt"))}}
-            {{localize 'CYPHERSYSTEM.HaleEffect'}}
-          {{/if}}
-          {{#if (eq actor.system.combat.damageTrack.state "Impaired")}}
-            {{localize 'CYPHERSYSTEM.ImpairedEffect1'}}
-            <br>
-            {{localize 'CYPHERSYSTEM.ImpairedEffect2'}}
-          {{/if}}
-          {{#if (eq actor.system.combat.damageTrack.state "Debilitated")}}
-            {{localize 'CYPHERSYSTEM.DebilitatedEffect1'}}
-            <br>
-            {{localize 'CYPHERSYSTEM.DebilitatedEffect2'}}
-          {{/if}}
-          {{#if (eq actor.system.combat.damageTrack.state "Dead")}}
-            {{localize 'CYPHERSYSTEM.DeadEffect'}}
-          {{/if}}
-        </div>
-        <div class="damage-track-apply centered-content">
-          {{#if (eq actor.system.combat.damageTrack.state "Impaired")}}
-            <a class="item-control apply-impaired {{#if ../sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.ApplyStatusToRoll'}}">
-              <i class="fa-item fas fa-check" aria-hidden="true" style="color: {{#unless actor.system.combat.damageTrack.applyImpaired}}grey{{/unless}}"></i>
-            </a>
-          {{/if}}
-          {{#if (eq actor.system.combat.damageTrack.state "Debilitated")}}
-            <a class="item-control apply-debilitated {{#if ../sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.ApplyStatusToRoll'}}">
-              <i class="fa-item fas fa-check" aria-hidden="true" style="color: {{#unless actor.system.combat.damageTrack.applyDebilitated}}grey{{/unless}}"></i>
-            </a>
-          {{/if}}
-        </div>
+      {{!-- Any other than Unmasked --}}
+        {{#if sheetSettings.useWounds}}
+        {{!-- Use Wounds (Cypher v2) --}}
+          <li class="item flex-column non-draggable">
+              <div class=resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
+	      </div>
+              <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
+                  <div>{{localize 'CYPHERSYSTEM.MinorWounds'}}</div>
+                  <div class="" id="system.combat.wounds.minor">{{{eachWoundCheckBox actor.system.combat.wounds.minorWounds "minor" }}}  {{actor.system.combat.wounds.minorWounds.current}}/{{actor.system.combat.wounds.minorWounds.max}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">
+                    <div class="stat-controls {{{sheetSettings.showOnHover}}}">
+                      <a class="item-control decrease-minor-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.SubtractWounds'}}">
+                        <i class="fa-item quantity fa-regular fa-minus-square stat"></i>
+                      </a>
+                      <a class="item-control increase-minor-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.AddWounds'}}">
+                        <i class="fa-item quantity fa-regular fa-plus-square stat"></i>
+                      </a>
+                      <a class="item-control reset-minor-wound {{#if sheetSettings.isObserver}}disabled{{/if}} reset-stat" title="{{localize 'CYPHERSYSTEM.ResetMinorWounds'}}">
+                        <i class="fa-item fas fa-sync-alt stat"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.minorWounds.current actor.system.combat.wounds.minorWounds.max)}}{{localize 'CYPHERSYSTEM.MinorWoundsMaxWarning'}}{{/if}}</div>
+              </div>
+              <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
+                  <div>{{localize 'CYPHERSYSTEM.ModerateWounds'}}</div>
+                  <div name="system.combat.wounds.moderate">{{{eachWoundCheckBox actor.system.combat.wounds.moderateWounds "moderate"}}}  {{actor.system.combat.wounds.moderateWounds.current}}/{{actor.system.combat.wounds.moderateWounds.max}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">
+                    <div class="stat-controls {{{sheetSettings.showOnHover}}}">
+                      <a class="item-control decrease-moderate-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.SubtractWounds'}}">
+                        <i class="fa-item quantity fa-regular fa-minus-square stat"></i>
+                      </a>
+                      <a class="item-control increase-moderate-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.AddWounds'}}">
+                        <i class="fa-item quantity fa-regular fa-plus-square stat"></i>
+                      </a>
+                      <a class="item-control reset-moderate-wound {{#if sheetSettings.isObserver}}disabled{{/if}} reset-stat" title="{{localize 'CYPHERSYSTEM.ResetModerateWounds'}}">
+                        <i class="fa-item fas fa-sync-alt stat"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.moderateWounds.current actor.system.combat.wounds.moderateWounds.max)}}{{localize 'CYPHERSYSTEM.ModerateWoundsMaxWarning'}}{{/if}}</div>
+              </div>
+              <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
+                  <div>{{localize 'CYPHERSYSTEM.MajorWounds'}}</div>
+                  <div name="system.combat.wounds.major">{{{eachWoundCheckBox actor.system.combat.wounds.majorWounds "major" }}}  {{actor.system.combat.wounds.majorWounds.current}}/{{actor.system.combat.wounds.majorWounds.max}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">
+                    <div class="stat-controls {{{sheetSettings.showOnHover}}}">
+                      <a class="item-control decrease-major-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.SubtractWounds'}}">
+                        <i class="fa-item quantity fa-regular fa-minus-square stat"></i>
+                      </a>
+                      <a class="item-control increase-major-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.AddWounds'}}">
+                        <i class="fa-item quantity fa-regular fa-plus-square stat"></i>
+                      </a>
+                      <a class="item-control reset-major-wound {{#if sheetSettings.isObserver}}disabled{{/if}} reset-stat" title="{{localize 'CYPHERSYSTEM.ResetMajorWounds'}}">
+                        <i class="fa-item fas fa-sync-alt stat"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.majorWounds.current actor.system.combat.wounds.majorWounds.max)}}{{localize 'CYPHERSYSTEM.MajorWoundsMaxWarning'}}{{/if}}</div>
+              </div>
+        </li>
+        {{else}}
+          {{!-- Use Damage Track (Cypher System v1) --}}
+          
+          <div class="item-damage">
+            <select class="damage-track-select" name="system.combat.damageTrack.state">
+              {{selectOptions damageTrackChoices selected=actor.system.combat.damageTrack.state localize=true}}
+            </select>
+          </div>
+          <div class="centered-content" style="min-height: 40px; line-height: 1.4">
+            {{#if (or (eq actor.system.combat.damageTrack.state "Hale") (eq actor.system.combat.damageTrack.state "Hurt"))}}
+              {{localize 'CYPHERSYSTEM.HaleEffect'}}
+            {{/if}}
+            {{#if (eq actor.system.combat.damageTrack.state "Impaired")}}
+              {{localize 'CYPHERSYSTEM.ImpairedEffect1'}}
+              <br>
+              {{localize 'CYPHERSYSTEM.ImpairedEffect2'}}
+            {{/if}}
+            {{#if (eq actor.system.combat.damageTrack.state "Debilitated")}}
+              {{localize 'CYPHERSYSTEM.DebilitatedEffect1'}}
+              <br>
+              {{localize 'CYPHERSYSTEM.DebilitatedEffect2'}}
+            {{/if}}
+            {{#if (eq actor.system.combat.damageTrack.state "Dead")}}
+              {{localize 'CYPHERSYSTEM.DeadEffect'}}
+            {{/if}}
+          </div>
+          <div class="damage-track-apply centered-content">
+            {{#if (eq actor.system.combat.damageTrack.state "Impaired")}}
+              <a class="item-control apply-impaired {{#if ../sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.ApplyStatusToRoll'}}">
+                <i class="fa-item fas fa-check" aria-hidden="true" style="color: {{#unless actor.system.combat.damageTrack.applyImpaired}}grey{{/unless}}"></i>
+              </a>
+            {{/if}}
+            {{#if (eq actor.system.combat.damageTrack.state "Debilitated")}}
+              <a class="item-control apply-debilitated {{#if ../sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.ApplyStatusToRoll'}}">
+                <i class="fa-item fas fa-check" aria-hidden="true" style="color: {{#unless actor.system.combat.damageTrack.applyDebilitated}}grey{{/unless}}"></i>
+              </a>
+            {{/if}}
+          </div>
+         {{/if}}
       {{/if}}
     </li>
+    {{!-- Recovery Rolls --}}
     <li class="item flexrow non-draggable">
       <div class="item-quantity">
         <input style="line-height: normal; margin: auto; width: 95px; display: flex; align-content: center;" name="system.combat.recoveries.roll" type="text" value="{{actor.system.combat.recoveries.roll}}" placeholder="1d6+1" {{sheetSettings.disabledStaticStats}} />

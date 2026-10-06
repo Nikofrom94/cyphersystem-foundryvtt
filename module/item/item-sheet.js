@@ -7,6 +7,8 @@ import {getBackgroundIcon, getBackgroundIconOpacity, getBackgroundIconPath, getB
 import {byNameAscending} from "../utilities/sorting.js";
 import {archiveItems} from "../utilities/tagging-engine/tagging-engine-computation.js";
 
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 export class CypherItemSheet extends foundry.appv1.sheets.ItemSheet {
 
   /** @override */

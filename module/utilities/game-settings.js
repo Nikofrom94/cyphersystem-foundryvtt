@@ -95,6 +95,16 @@ export async function registerGameSettings() {
     config: true
   });
 
+  // use damage track or wounds
+  game.settings.register("cyphersystem", "useWounds", {
+    name: game.i18n.localize("CYPHERSYSTEM.SettingDamageTracking"),
+    hint: game.i18n.localize("CYPHERSYSTEM.SettingDamageTrackingWounds"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true
+  });
+
   game.settings.register("cyphersystem", "ruleBreakingRolls", {
     name: game.i18n.localize("CYPHERSYSTEM.SettingRuleBreakingRolls"),
     hint: game.i18n.localize("CYPHERSYSTEM.SettingRuleBreakingRollsHint"),

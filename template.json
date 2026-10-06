@@ -10,7 +10,7 @@
     ],
     "templates": {
       "version": {
-        "version": 3
+        "version": 4
       }
     },
     "pc": {
@@ -77,6 +77,20 @@
           "state": "Hale",
           "applyImpaired": true,
           "applyDebilitated": true
+        },
+        "wounds":{
+          "minorWounds":{
+            "max": 3,
+            "current":0
+          },
+          "moderateWounds":{
+            "max": 3,
+            "current":0
+          },
+          "majorWounds":{
+            "max": 3,
+            "current":0
+          }
         },
         "stress": {
           "quantity": 0,
