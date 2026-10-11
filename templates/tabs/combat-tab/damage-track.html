@@ -106,11 +106,9 @@
         {{#if sheetSettings.useWounds}}
         {{!-- Use Wounds (Cypher v2) --}}
           <li class="item flex-column non-draggable">
-              <div class=resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
-	      </div>
               <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
                   <div>{{localize 'CYPHERSYSTEM.MinorWounds'}}</div>
-                  <div class="" id="system.combat.wounds.minor">{{{eachWoundCheckBox actor.system.combat.wounds.minorWounds "minor" }}}  {{actor.system.combat.wounds.minorWounds.current}}/{{actor.system.combat.wounds.minorWounds.max}}</div>
+                  <div class="" id="system.combat.wounds.minor">{{{eachWoundCheckBox actor.system.combat.wounds.minor "minor" }}}{{actor.system.combat.wounds.minor.current}}/{{actor.system.combat.wounds.minor.max}}</div>
                   <div style="min-height: 40px; line-height: 1.4">
                     <div class="stat-controls {{{sheetSettings.showOnHover}}}">
                       <a class="item-control decrease-minor-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.SubtractWounds'}}">
@@ -124,11 +122,13 @@
                       </a>
                     </div>
                   </div>
-                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.minorWounds.current actor.system.combat.wounds.minorWounds.max)}}{{localize 'CYPHERSYSTEM.MinorWoundsMaxWarning'}}{{/if}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.minor.current actor.system.combat.wounds.minor.max)}}{{localize 'CYPHERSYSTEM.MinorWoundsMaxWarning'}}{{/if}}</div>
               </div>
+         </li>
+         <li class="item flex-column non-draggable">
               <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
                   <div>{{localize 'CYPHERSYSTEM.ModerateWounds'}}</div>
-                  <div name="system.combat.wounds.moderate">{{{eachWoundCheckBox actor.system.combat.wounds.moderateWounds "moderate"}}}  {{actor.system.combat.wounds.moderateWounds.current}}/{{actor.system.combat.wounds.moderateWounds.max}}</div>
+                  <div name="system.combat.wounds.moderate">{{{eachWoundCheckBox actor.system.combat.wounds.moderate "moderate"}}}  {{actor.system.combat.wounds.moderate.current}}/{{actor.system.combat.wounds.moderate.max}}</div>
                   <div style="min-height: 40px; line-height: 1.4">
                     <div class="stat-controls {{{sheetSettings.showOnHover}}}">
                       <a class="item-control decrease-moderate-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.SubtractWounds'}}">
@@ -142,11 +142,13 @@
                       </a>
                     </div>
                   </div>
-                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.moderateWounds.current actor.system.combat.wounds.moderateWounds.max)}}{{localize 'CYPHERSYSTEM.ModerateWoundsMaxWarning'}}{{/if}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.moderate.current actor.system.combat.wounds.moderate.max)}}{{localize 'CYPHERSYSTEM.ModerateWoundsMaxWarning'}}{{/if}}</div>
               </div>
+         </li>
+         <li class="item flex-column non-draggable">
               <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
                   <div>{{localize 'CYPHERSYSTEM.MajorWounds'}}</div>
-                  <div name="system.combat.wounds.major">{{{eachWoundCheckBox actor.system.combat.wounds.majorWounds "major" }}}  {{actor.system.combat.wounds.majorWounds.current}}/{{actor.system.combat.wounds.majorWounds.max}}</div>
+                  <div name="system.combat.wounds.major">{{{eachWoundCheckBox actor.system.combat.wounds.major "major" }}}  {{actor.system.combat.wounds.major.current}}/{{actor.system.combat.wounds.major.max}}</div>
                   <div style="min-height: 40px; line-height: 1.4">
                     <div class="stat-controls {{{sheetSettings.showOnHover}}}">
                       <a class="item-control decrease-major-wound {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.SubtractWounds'}}">
@@ -160,7 +162,25 @@
                       </a>
                     </div>
                   </div>
-                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.wounds.majorWounds.current actor.system.combat.wounds.majorWounds.max)}}{{localize 'CYPHERSYSTEM.MajorWoundsMaxWarning'}}{{/if}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">
+{{#if (eq actor.system.combat.wounds.major.current actor.system.combat.wounds.major.max)}}{{localize 'CYPHERSYSTEM.MajorWoundsMaxWarning'}}{{/if}}</div>
+              </div>
+        </li>
+        <!--  display shield wound status -->
+        <li class="item flex-column non-draggable">
+              <div class="resource-content flexrow flex-center" style="margin-top: auto; margin-bottom: auto;">
+                  <div>{{localize 'CYPHERSYSTEM.ShieldWounds'}}</div>
+                  <div name="system.combat.wounds.minor">{{{eachWoundCheckBox actor.system.combat.shield.minor "shield_minor" }}}{{localize 'CYPHERSYSTEM.ShieldWoundsMinor'}}</div>
+                  <div name="system.combat.wounds.moderate">{{{eachWoundCheckBox actor.system.combat.shield.moderate "shield_moderate" }}}{{localize 'CYPHERSYSTEM.ShieldWoundsModerate'}}</div>
+                  <div name="system.combat.wounds.major">{{{eachWoundCheckBox actor.system.combat.shield.major "shield_major" }}}{{localize 'CYPHERSYSTEM.ShieldWoundsMajor'}}</div>
+                  <div style="min-height: 40px; line-height: 1.4">
+                    <div class="stat-controls {{{sheetSettings.showOnHover}}}">
+                      <a class="item-control reset-shield-wounds {{#if sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.ResetShieldWounds'}}">
+                        <i class="fa-item fas fa-sync-alt stat"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="min-height: 40px; line-height: 1.4">{{#if (eq actor.system.combat.shield.major.current actor.system.combat.shield.major.max)}}{{localize 'CYPHERSYSTEM.ShieldDestroyed'}}{{/if}}</div>
               </div>
         </li>
         {{else}}

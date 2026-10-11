@@ -97,8 +97,8 @@ export async function registerGameSettings() {
 
   // use damage track or wounds
   game.settings.register("cyphersystem", "useWounds", {
-    name: game.i18n.localize("CYPHERSYSTEM.SettingDamageTracking"),
-    hint: game.i18n.localize("CYPHERSYSTEM.SettingDamageTrackingWounds"),
+    name: game.i18n.localize("CYPHERSYSTEM.WoundsTracking"),
+    hint: game.i18n.localize("CYPHERSYSTEM.WoundsTrackingHint"),
     scope: "world",
     type: Boolean,
     default: false,

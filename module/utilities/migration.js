@@ -818,17 +818,32 @@ async function migrationActorV4ToV5(actor) {
       if(updateData.system.combat.wounds == null){
         // if wounds are not in the actor data model, add it
         updateData.system.combat.wounds = {
-            "minorWounds":{
+            "minor":{
               "max": 3,
               "current":0
             },
-            "moderateWounds":{
+            "moderate":{
               "max": 3,
               "current":0
             },
-            "majorWounds":{
+            "major":{
               "max": 3,
               "current":0
+            },
+            "shield":{
+              "minor":{
+                "max": 3,
+                "current": 0
+              },
+              "moderate":{
+                "max": 3,
+                "current": 0
+              },
+              "major":{
+                "max": 3,
+                "current": 0
+              },
+
             }
           };
       }

@@ -82,10 +82,10 @@ export async function rollEngineMain(data) {
   }
   if (!data.difficultyFromWounds) {
     let hinderedFromWound = 0;
-    if(actor.system.combat.wounds.moderateWounds.max == actor.system.combat.wounds.moderateWounds.current){
+    if(actor.system.combat.wounds.moderate.max == actor.system.combat.wounds.moderate.current){
       hinderedFromWound++;
     }
-    hinderedFromWound += actor.system.combat.wounds.majorWounds.current;
+    hinderedFromWound += actor.system.combat.wounds.major.current;
     data.difficultyFromWounds = hinderedFromWound;
   }
   if (!data.damage) {

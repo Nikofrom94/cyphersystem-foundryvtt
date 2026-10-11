@@ -534,70 +534,70 @@ export class CypherActorSheetPC extends CypherActorSheet {
 
     // Increase Minor Wounds
     html.find('.increase-minor-wound').click(clickEvent => {
-      let newValue = this.actor.system.combat.wounds.minorWounds.max + 1;
-      this.actor.update({"system.combat.wounds.minorWounds.max": newValue});
+      let newValue = this.actor.system.combat.wounds.minor.max + 1;
+      this.actor.update({"system.combat.wounds.minor.max": newValue});
     });
 
     // Decrease Minor Wounds
     html.find('.decrease-minor-wound').click(clickEvent => {
-      let newValue = this.actor.system.combat.wounds.minorWounds.max - 1;
+      let newValue = this.actor.system.combat.wounds.minor.max - 1;
       // Minor wounds count can't be lower than 3
       if(newValue < 3){
         newValue = 3;
       }
-      this.actor.update({"system.combat.wounds.minorWounds.max": newValue});
+      this.actor.update({"system.combat.wounds.minor.max": newValue});
       // adjust current minor wound level if needed
-      if(this.actor.system.combat.wounds.minorWounds.current > newValue){
-        this.actor.update({"system.combat.wounds.minorWounds.current": newValue});
+      if(this.actor.system.combat.wounds.minor.current > newValue){
+        this.actor.update({"system.combat.wounds.minor.current": newValue});
       }
     });
 
     // Reset Minor Wounds
     html.find('.reset-minor-wound').click(clickEvent => {
-      this.actor.update({"system.combat.wounds.minorWounds.current": 0});
+      this.actor.update({"system.combat.wounds.minor.current": 0});
     });
 
      // Increase Moderate Wounds
     html.find('.increase-moderate-wound').click(clickEvent => {
-      let newValue = this.actor.system.combat.wounds.moderateWounds.max + 1;
-      this.actor.update({"system.combat.wounds.moderateWounds.max": newValue});
+      let newValue = this.actor.system.combat.wounds.moderate.max + 1;
+      this.actor.update({"system.combat.wounds.moderate.max": newValue});
     });
 
     // Decrease Moderate Wounds
     html.find('.decrease-moderate-wound').click(clickEvent => {
-      let newValue = this.actor.system.combat.wounds.moderateWounds.max - 1;
+      let newValue = this.actor.system.combat.wounds.moderate.max - 1;
       // Moderate wounds count can't be lower than 3
       if(newValue < 3){
         newValue = 3;
       }
-      this.actor.update({"system.combat.wounds.moderateWounds.max": newValue});
+      this.actor.update({"system.combat.wounds.moderate.max": newValue});
     });
 
     // Reset Moderate Wounds
     html.find('.reset-moderate-wound').click(clickEvent => {
-      this.actor.update({"system.combat.wounds.moderateWounds.current": 0});
+      this.actor.update({"system.combat.wounds.moderate.current": 0});
     });
 
 
     // Increase Major Wounds
     html.find('.increase-major-wound').click(clickEvent => {
-      let newValue = this.actor.system.combat.wounds.majorWounds.max + 1;
-      this.actor.update({"system.combat.wounds.majorWounds.max": newValue});
+      let newValue = this.actor.system.combat.wounds.major.max + 1;
+      this.actor.update({"system.combat.wounds.major.max": newValue});
     });
 
     // Decrease Major Wounds
     html.find('.decrease-major-wound').click(clickEvent => {
-      let newValue = this.actor.system.combat.wounds.majorWounds.max - 1;
+      let newValue = this.actor.system.combat.wounds.major.max - 1;
       // major wounds count can't be lower than 3
       if(newValue < 3){
         newValue = 3;
       }
-      this.actor.update({"system.combat.wounds.majorWounds.max": newValue});
+      this.actor.update({"system.combat.wounds.major.max": newValue});
     });
 
     // Reset Major Wounds
     html.find('.reset-major-wound').click(clickEvent => {
-      this.actor.update({"system.combat.wounds.majorWounds.current": 0});
+      this.actor.update({"system.combat.wounds.major.current": 0});
     });
 
     // toggle minor wounds checkbox
@@ -610,7 +610,7 @@ export class CypherActorSheetPC extends CypherActorSheet {
             countChecked = countChecked + 1;
           }
       }
-      this.actor.update({"system.combat.wounds.minorWounds.current": countChecked});
+      this.actor.update({"system.combat.wounds.minor.current": countChecked});
     });
     // toggle moderate wounds checkbox
     html.find(".checkwounds_moderate > input").change(changeEvent => {
@@ -622,7 +622,7 @@ export class CypherActorSheetPC extends CypherActorSheet {
             countChecked = countChecked + 1;
           }
       }
-      this.actor.update({"system.combat.wounds.moderateWounds.current": countChecked});
+      this.actor.update({"system.combat.wounds.moderate.current": countChecked});
     });
     // toggle major wounds checkbox
     html.find(".checkwounds_major > input").change(changeEvent => {
@@ -634,7 +634,55 @@ export class CypherActorSheetPC extends CypherActorSheet {
             countChecked = countChecked + 1;
           }
       }
-      this.actor.update({"system.combat.wounds.majorWounds.current": countChecked});
+      this.actor.update({"system.combat.wounds.major.current": countChecked});
+    });
+    /**
+     * Handle shield inputbox
+     * */
+    // toggle shield minor wounds checkbox
+    html.find(".checkwounds_shield_minor > input").change(changeEvent => {
+      let countChecked = 0;
+      const inputBoxes = $(".checkwounds_shield_minor > input");
+      for(let i=0;i< inputBoxes.length;i++){
+        const inputbox = inputBoxes[i];
+        if(inputbox.checked){
+            countChecked = countChecked + 1;
+          }
+      }
+      this.actor.update({"system.combat.shield.minor.current": countChecked});
+    });
+    // toggle shield moderate wounds checkbox
+    html.find(".checkwounds_shield_moderate > input").change(changeEvent => {
+      let countChecked = 0;
+      const inputBoxes = $(".checkwounds_shield_moderate > input");
+      for(let i=0;i< inputBoxes.length;i++){
+        const inputbox = inputBoxes[i];
+        if(inputbox.checked){
+            countChecked = countChecked + 1;
+          }
+      }
+      this.actor.update({"system.combat.shield.moderate.current": countChecked});
+    });
+    // toggle shield major wounds checkbox
+    html.find(".checkwounds_shield_major > input").change(changeEvent => {
+      let countChecked = 0;
+      const inputBoxes = $(".checkwounds_shield_major > input");
+      for(let i=0;i< inputBoxes.length;i++){
+        const inputbox = inputBoxes[i];
+        if(inputbox.checked){
+            countChecked = countChecked + 1;
+          }
+      }
+      this.actor.update({"system.combat.shield.major.current": countChecked});
+    });
+
+    // Reset shield Wounds
+    html.find('.reset-shield-wounds').click(clickEvent => {
+      this.actor.update({
+        "system.combat.shield.minor.current": 0,
+        "system.combat.shield.moderate.current": 0,
+        "system.combat.shield.major.current": 0
+      });
     });
 
     // Reset Recovery Rolls

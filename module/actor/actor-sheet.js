@@ -179,12 +179,12 @@ export class CypherActorSheet extends foundry.appv1.sheets.ActorSheet {
     const tagsTwo = [];
     const tagsThree = [];
     const tagsFour = [];
-    const minorWounds = [];
-    const minorWoundsMax = 0;
-    const moderateWounds = [];
-    const moderateWoundsMax = 0;
-    const majorWounds = [];
-    const majorWoundsMax = 0;
+    const minor = [];
+    const minorMax = 0;
+    const moderate = [];
+    const moderateMax = 0;
+    const major = [];
+    const majorMax = 0;
 
     // Iterate through items, allocating to containers
     for (let item of data.items) {

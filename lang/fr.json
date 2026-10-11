@@ -763,10 +763,8 @@
   "CYPHERSYSTEM.SettingUltimateDamageHint": "L'Effort utilisé pour infliger des dégâts ignore l'Effort maximal du personnage, mais reste limité à six niveaux d'Effort au total.",
   "CYPHERSYSTEM.SettingRuleBreakingRollsHint": "Les jets peuvent être effectués et les coûts des Réserves peuvent être payés même si cela enfreint les règles.",
   "CYPHERSYSTEM.Wounds": "Blessures",
-  "CYPHERSYSTEM.SettingDamageTracking": "Suivi des Dommages pour les PJs",
-  "CYPHERSYSTEM.SettingDamageTrackingHint": "Suivi des Dommages pour les PJs : vous pouvez utiliser le Cypher System 1 pour le Cypher v2 avec les blessures.",
-  "CYPHERSYSTEM.SettingDamageTrackingDamageTrack": "Cypher System v1",
-  "CYPHERSYSTEM.SettingDamageTrackingWounds": "Cypher v2 - Blessures",
+  "CYPHERSYSTEM.WoundsTracking": "Utiliser les blessures pour les PJs (Cypher v2 - C2)",
+  "CYPHERSYSTEM.WoundsTrackingHint": "Cypher v2 propose un système de gestion des blessures en remplacement de l'attrition des Réserves pour les PJs. Cette option rempale le tableau de suivi des dommages dans l'onglet combat de la feuille de personnage.",
   "CYPHERSYSTEM.MinorWounds": "Blessures Mineures",
   "CYPHERSYSTEM.MinorWoundsEffect": "Pas d’effets. Les blessures mineures en excès deviennent modérées.",
   "CYPHERSYSTEM.ModerateWounds": "Blessures Modérées",
@@ -781,6 +779,12 @@
   "CYPHERSYSTEM.ModerateWoundsMaxWarning": "Toutes les actions sont entravées et toute nouvelle blessure modérée devient majeure.",
   "CYPHERSYSTEM.MajorWoundsMaxWarning": "Vous êtes mort !",
   "CYPHERSYSTEM.AddWounds": "Ajouter un niveau de blessure possible",
-  "CYPHERSYSTEM.WoundsHinderance": "Pénalité:"
+  "CYPHERSYSTEM.DifficultyModifierByWounds": "Modificateur des blessures",
+  "CYPHERSYSTEM.ShieldWounds": "Bouclier",
+  "CYPHERSYSTEM.ShieldWoundsMinor": "Mineures",
+  "CYPHERSYSTEM.ShieldWoundsModerate": "Modérées",
+  "CYPHERSYSTEM.ShieldWoundsMajor": "Majeures",
+  "CYPHERSYSTEM.ShieldDestroyed": "Bouclier détruit !",
+  "CYPHERSYSTEM.ResetShieldWounds": "Réinitialiser les blessures encaissées par le bouclier.",
 }
 
