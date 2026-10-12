@@ -507,7 +507,7 @@ select.bar-attribute {
 }
 
 .cyphersystem .background-image.cypher-blue {
-  background-image: linear-gradient(rgb(203, 203, 218), white) !important;
+  //background-image: linear-gradient(rgb(203, 203, 218), white) !important;
   background-size: cover;
 }
 
