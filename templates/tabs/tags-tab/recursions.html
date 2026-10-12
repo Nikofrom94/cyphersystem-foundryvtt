@@ -4,8 +4,8 @@
       <div class="item-name">
         {{localize 'CYPHERSYSTEM.Recursions'}}
       </div>
-      <div class="item-controls">
-        <a class="item-control item-create {{#if ./sheetSettings.isObserver}}disabled{{/if}}" title="{{localize 'CYPHERSYSTEM.CreateItem'}}" data-type="recursion">
+      <div class="item-controls flexrow">
+        <a class="item-control {{disabled ./sheetSettings.isObserver}}" title="{{localize 'CYPHERSYSTEM.CreateItem'}}" data-type="recursion" data-action="itemCreate">
           <i class="fa-item fas fa-plus"></i>
         </a>
       </div>

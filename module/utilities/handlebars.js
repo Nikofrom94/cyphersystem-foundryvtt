@@ -142,13 +142,13 @@ export async function registerHandlebars() {
       let inactive = (!tag.system.active) ? "tag-inactive" : "";
       let exclusive = (tag.system.exclusive) ? "<i class='fa-item fas fa-exclamation'></i>" : "";
       let title = (tag.system.active) ? game.i18n.format("CYPHERSYSTEM.ArchiveItemsWithTag", {tag: tag.name}) : game.i18n.format("CYPHERSYSTEM.UnarchiveItemsWithTag", {tag: tag.name});
-      tagOutput = tagOutput + `<a class="tag-items toggle-tag ${inactive} ${isObserver}" data-item-id="${tag._id}" title="${title}">` + exclusive + `<i class="fa-item fas fa-hashtag"></i> ${tag.name}</a> `;
+      tagOutput = tagOutput + `<a class="tag-items ${inactive} ${isObserver}" data-action="toggleTag" data-item-id="${tag._id}" title="${title}">` + exclusive + `<i class="fa-item fas fa-hashtag"></i> ${tag.name}</a> `;
     }
 
     for (let recursion of recursionArray) {
       let inactive = (!recursion.system.active) ? "tag-inactive" : "";
       let title = game.i18n.format("CYPHERSYSTEM.TranslateToRecursion", {recursion: recursion.name});
-      recursionOutput = recursionOutput + `<a class="tag-items toggle-tag ${inactive} ${isObserver}" data-item-id="${recursion._id}" title="${title}"><i class="fa-item fas fa-at"></i> ${recursion.name}</a> `;
+      recursionOutput = recursionOutput + `<a class="tag-items ${inactive} ${isObserver}" data-action="toggleTag" data-item-id="${recursion._id}" title="${title}"><i class="fa-item fas fa-at"></i> ${recursion.name}</a> `;
     }
 
     if (tagOutput) tagOutput = "<p>" + tagOutput + "</p>";
@@ -224,9 +224,9 @@ export async function registerHandlebars() {
     for (let index = 0; index < wound.max; index++) {
       const input_name = name+"_"+index.toString();
       if ( index >= wound.current){
-        ret = ret + "<input type=\"checkbox\" name=\""+input_name+"\"/>";
+        ret = ret + "<input type=\"checkbox\" name=\""+input_name+"\" data-action=\"toggleWound\" />";
       }else{
-        ret = ret + "<input type=\"checkbox\" name=\""+input_name+"\" checked />";
+        ret = ret + "<input type=\"checkbox\" name=\""+input_name+"\" checked  data-action=\"toggleWound\" />";
       }
     }
     ret = ret + "</div>";
