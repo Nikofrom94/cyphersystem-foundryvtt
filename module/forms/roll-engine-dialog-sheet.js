@@ -266,13 +266,7 @@ export class RollEngineDialogSheet extends HandlebarsApplicationMixin(Applicatio
     return context;
   }
 
-  static #onSubmit(event, form, formData) {
-    let data = this.options.data;
-    let actor = fromUuidSync(data.actorUuid);
-
-    formData = formData.object;
-
-    // Basic data
+  static _mergeDataFromForm(data,formData){
     data.baseDifficulty = parseInt(formData.baseDifficulty);
     data.pool = formData.pool;
     data.skillLevel = parseInt(formData.skillLevel);
@@ -288,6 +282,17 @@ export class RollEngineDialogSheet extends HandlebarsApplicationMixin(Applicatio
     data.difficultyFromWounds = formData.difficultyFromWounds ? formData.difficultyFromWounds : 0;
     data.bonus = formData.bonus ? formData.bonus : 0;
     data.poolPointCost = formData.poolPointCost ? formData.poolPointCost : 0;
+    return data;
+  }
+
+  static #onSubmit(event, form, formData) {
+    let data = this.options.data;
+    let actor = fromUuidSync(data.actorUuid);
+
+    formData = formData.object;
+
+    // Basic data
+    data = RollEngineDialogSheet._mergeDataFromForm(data,formData);
 
     // Derived data
     data.effortTotal = data.effortToEase + data.effortOtherUses + data.effortDamage;
@@ -388,7 +393,7 @@ export class RollEngineDialogSheet extends HandlebarsApplicationMixin(Applicatio
 
     // Update data with latest from dialog
     const fd = new foundry.applications.ux.FormDataExtended(this.form);
-    foundry.utils.mergeObject(data, fd.object, {inplace: true});     
+    data = RollEngineDialogSheet._mergeDataFromForm(data,fd.object);
 
     data.skipRoll = false;
     if (actor.system.basic.unmaskedForm != "Teen") {
@@ -411,7 +416,7 @@ export class RollEngineDialogSheet extends HandlebarsApplicationMixin(Applicatio
 
     // Update data with latest from dialog
     const fd = new foundry.applications.ux.FormDataExtended(this.form);
-    foundry.utils.mergeObject(data, fd.object, {inplace: true});     
+    data = RollEngineDialogSheet._mergeDataFromForm(data,fd.object);
 
     data.skipRoll = true;
     if (actor.system.basic.unmaskedForm != "Teen") {
