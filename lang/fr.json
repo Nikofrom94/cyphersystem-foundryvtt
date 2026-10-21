@@ -785,6 +785,13 @@
   "CYPHERSYSTEM.ShieldWoundsModerate": "Modérées",
   "CYPHERSYSTEM.ShieldWoundsMajor": "Majeures",
   "CYPHERSYSTEM.ShieldDestroyed": "Bouclier détruit !",
-  "CYPHERSYSTEM.ResetShieldWounds": "Réinitialiser les blessures encaissées par le bouclier."
+  "CYPHERSYSTEM.ResetShieldWounds": "Réinitialiser les blessures encaissées par le bouclier.",
+  "CYPHERSYSTEM.Healing": "Soins",
+  "CYPHERSYSTEM.RallyingHint": "",
+  "CYPHERSYSTEM.Rallying": "Second souffle",
+  "CYPHERSYSTEM.TreatmentHint": "",
+  "CYPHERSYSTEM.Treatment": "Se soigner",
+  "CYPHERSYSTEM.RestHint": "",
+  "CYPHERSYSTEM.Rest": "Se reposer"
 }
 

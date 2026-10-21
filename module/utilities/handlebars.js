@@ -220,7 +220,8 @@ export async function registerHandlebars() {
 
   Handlebars.registerHelper("eachWoundCheckBox", function(wound, name,options){
     // returns a set of checkbox some checked if the actor suffered some wounds
-    let ret = "<div class=\"checkwounds_"+name+"\">";
+//    let ret = "<div class=\"checkwounds_"+name+"\">";
+    let ret = "";
     for (let index = 0; index < wound.max; index++) {
       const input_name = name+"_"+index.toString();
       if ( index >= wound.current){
@@ -229,7 +230,7 @@ export async function registerHandlebars() {
         ret = ret + "<input type=\"checkbox\" name=\""+input_name+"\" checked  data-action=\"toggleWound\" />";
       }
     }
-    ret = ret + "</div>";
+  //  ret = ret + "</div>";
     return ret;
   });
 }

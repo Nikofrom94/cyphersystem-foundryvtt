@@ -762,11 +762,11 @@
   "CYPHERSYSTEM.Wounds": "Wounds",
   "CYPHERSYSTEM.WoundsTracking": "Use Wounds to track damages for PCs (Cypher v2 - C2)",
   "CYPHERSYSTEM.WoundsTrackingHint": "Cypher v2 has introduced a Wound tracker to replace the depletion of Pools to simulate damages for PCs. This option replace the damage tracker in the combat tab in the PC sheet.",
-  "CYPHERSYSTEM.MinorWounds": "Minor Wounds",
+  "CYPHERSYSTEM.MinorWounds": "Minor",
   "CYPHERSYSTEM.MinorWoundsEffect": "No negative effects, Excess minor wounds become moderate.",
-  "CYPHERSYSTEM.ModerateWounds": "Moderate Wounds",
+  "CYPHERSYSTEM.ModerateWounds": "Moderate",
   "CYPHERSYSTEM.ModerateWoundsEffect": "On your last moderate wound, all actions are hindered. Excess moderate wounds become major.",
-  "CYPHERSYSTEM.MajorWounds": "Major Wounds",
+  "CYPHERSYSTEM.MajorWounds": "Major",
   "CYPHERSYSTEM.MajorWoundsEffect": "Each major wound hinders all actions, on your last, you die.",
   "CYPHERSYSTEM.SubtractWounds": "Remove one level of potential wound (min 3).",
   "CYPHERSYSTEM.ResetMinorWounds": "Reset all minor wounds checked.",
@@ -782,5 +782,12 @@
   "CYPHERSYSTEM.ShieldWoundsModerate": "Moderate",
   "CYPHERSYSTEM.ShieldWoundsMajor": "Major",
   "CYPHERSYSTEM.ShieldDestroyed": "Shield destroyed !",
-  "CYPHERSYSTEM.ResetShieldWounds": "Reset wounds taken by the shield."
+  "CYPHERSYSTEM.ResetShieldWounds": "Reset wounds taken by the shield.",
+  "CYPHERSYSTEM.Healing": "Healing",
+  "CYPHERSYSTEM.RallyingHint": "",
+  "CYPHERSYSTEM.Rallying": "Rallying",
+  "CYPHERSYSTEM.TreatmentHint": "",
+  "CYPHERSYSTEM.Treatment": "Treatment",
+  "CYPHERSYSTEM.RestHint": "",
+  "CYPHERSYSTEM.Rest": "Rest"
 }
