@@ -789,5 +789,12 @@
   "CYPHERSYSTEM.TreatmentHint": "",
   "CYPHERSYSTEM.Treatment": "Treatment",
   "CYPHERSYSTEM.RestHint": "",
-  "CYPHERSYSTEM.Rest": "Rest"
+  "CYPHERSYSTEM.Rest": "Rest",
+  "CYPHERSYSTEM.ShieldSimple": "Simple Shield",
+  "TYPES.Item.shield": "Shield",
+  "CYPHERSYSTEM.ItemCreatedAsShield":"{item} has been copied as a shield.",
+  "CYPHERSYSTEM.Shield": "Shield",
+  "CYPHERSYSTEM.NewShield": "New Shield",
+  "CYPHERSYSTEM.SimpleShield": "Simple Shield",
+  "CYPHERSYSTEM.Minor/Moderate/Major": "Minor/Moderate/Major"
 }

@@ -186,6 +186,9 @@ export class PCData extends BaseActorData {
           armor: new fields.SchemaField({
             active: new fields.BooleanField({ initial: true }),
           }),
+          shield: new fields.SchemaField({
+            active: new fields.BooleanField({ initial: true }),
+          }),
         }),
         abilities: new fields.SchemaField({
           labelCategory1: new fields.StringField({ initial: "" }),
